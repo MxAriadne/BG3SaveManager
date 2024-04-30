@@ -1,0 +1,11 @@
+
+f
+java:S1192¬"HDefine a constant instead of duplicating this literal "Failed!" 5 times.(‹åÄµ8Øı–áÎ1
+m
+java:S1192©"JDefine a constant instead of duplicating this literal "Complete!" 5 times.(Ôƒ×Ûşÿÿÿÿ8Øı–áÎ1
+a
+java:S2095]"DUse try-with-resources or close this "Stream" in a "finally" clause.(½µ¶ê8‡ş–áÎ1
+I
+java:S1602n",Remove useless curly braces around statement(ÃÉş©8ş–áÎ1
+p
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ıåûˆ8ş–áÎ1

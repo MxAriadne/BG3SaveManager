@@ -287,12 +287,12 @@ public class Main extends Application {
 		// Save dir names to File array.
 		File[] saves = new File(saveDir).listFiles(directoryFileFilter);
 		// Sort by modification date.
-		Arrays.sort(saves, Comparator.comparingLong(file -> file.lastModified()));
+		Arrays.sort(saves, Comparator.comparingLong(File::lastModified));
 
 		// For each dir found...
 		for (File save : saves) {
 			// Define button with the name of the save...
-			Button saveBtn = new Button(save.getName());
+			Button saveBtn = new Button(save.getName() + " ");
 			// Set button width equal to that of the ScrollPane
 			saveBtn.setMinWidth(320);
 			// Center...
@@ -305,11 +305,16 @@ public class Main extends Application {
 				// On click we reset the status message.
 				status.setText("");
 				// Try to display the associated image file.
-				try {
-					// The webp file is named the same as the parent folder MINUS the player name, so we regex the player name out of it.
-					imagePreview.setImage(convertWebPToImage(save.getAbsolutePath() + "\\" + save.getName().replaceAll("^.*?__", "")+".webp"));
-				} catch (IOException ex) {
-					status.setText("Image does not exist.");
+				String folderName = save.getName().replaceAll("^.*?__", "");
+				if (!folderName.isEmpty()) {
+					String imagePath = save.getAbsolutePath() + "\\" + folderName + ".WebP";
+					try {
+						imagePreview.setImage(convertWebPToImage(imagePath));
+					} catch (IOException ex) {
+						status.setText("Image does not exist.");
+					}
+				} else {
+					status.setText("Invalid folder name for image preview.");
 				}
 			});
 			// Add to the VBox
@@ -326,6 +331,11 @@ public class Main extends Application {
 		if (!Files.exists(Paths.get(backupFolder))) {
 			// If not, make it.
 			Files.createDirectories(Paths.get(backupFolder));
+		}
+		// Checks if the save folder has been created yet
+		if (!Files.exists(Paths.get(saveFolder))) {
+			// If not, make it.
+			Files.createDirectories(Paths.get(saveFolder));
 		}
 		// Prettification of stuff
 		status.setAlignment(Pos.CENTER);
@@ -346,11 +356,12 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
+		System.out.println(saveFolder);
 		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
 		Scene scene = new Scene(fxmlLoader.load());
 		stage.setTitle("Baldurs Gate 3 Save Manager");
-		scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 		stage.getIcons().add(new Image(Main.class.getResourceAsStream("revivify.png")));
+		scene.getStylesheets().add(String.valueOf(Main.class.getResource("style.css")));
 		stage.setScene(scene);
 		stage.show();
 	}

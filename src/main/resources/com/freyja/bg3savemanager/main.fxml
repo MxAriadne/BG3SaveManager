@@ -18,21 +18,19 @@
       <Label />
       <Separator prefWidth="200.0" />
       <HBox fx:id="importing" alignment="CENTER" prefHeight="83.0" prefWidth="320.0" spacing="10.0" visible="false">
-         <children>
-            <Button fx:id="importAll" mnemonicParsing="false" onAction="#handleButtonClick" text="Import All" />
-            <Button fx:id="importSelected" mnemonicParsing="false" onAction="#handleButtonClick" text="Import Selected" />
-            <Button fx:id="deleteSelected" mnemonicParsing="false" onAction="#handleButtonClick" text="Delete Selected" />
-         </children>
+         <Button fx:id="importAll" mnemonicParsing="false" onAction="#handleButtonClick" text="Import All"/>
+         <Button fx:id="importSelected" mnemonicParsing="false" onAction="#handleButtonClick" text="Import Selected"/>
+         <Button fx:id="deleteSelected" mnemonicParsing="false" onAction="#handleButtonClick" text="Delete Selected"/>
       </HBox>
       <HBox fx:id="exporting" alignment="CENTER" prefHeight="83.0" prefWidth="320.0" spacing="10.0">
          <Button fx:id="archiveAll" mnemonicParsing="false" onAction="#handleButtonClick" text="Archive All" />
          <Button fx:id="archiveSelected" mnemonicParsing="false" onAction="#handleButtonClick" text="Archive Selected" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="83.0" prefWidth="320.0" spacing="10.0">
-         <children>
-            <Button fx:id="currentSavesBtn" mnemonicParsing="false" onAction="#handleButtonClick" text="Switch to Importing" />
-            <Button fx:id="backedSavesBtn" mnemonicParsing="false" onAction="#handleButtonClick" text="Switch to Backup" visible="false" />
-         </children>
+         <Button fx:id="currentSavesBtn" mnemonicParsing="false" onAction="#handleButtonClick"
+                 text="Switch to Importing"/>
+         <Button fx:id="backedSavesBtn" mnemonicParsing="false" onAction="#handleButtonClick" text="Switch to Backup"
+                 visible="false"/>
       </HBox>
       <Label fx:id="status" prefHeight="38.0" prefWidth="320.0" textAlignment="CENTER" />
    </VBox>
